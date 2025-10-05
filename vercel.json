@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "outputDirectory": "dist",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist", "outputDirectory": "dist" }
+    }
+  ],
+  "routes": [
+    { "src": "/_next/static/(.*)", "headers": { "cache-control": "s-maxage=31536000, stale-while-revalidate=59" }, "dest": "/_next/static/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
