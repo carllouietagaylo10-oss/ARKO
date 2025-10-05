@@ -1,0 +1,408 @@
+/* ==========================================================================
+   ARKO 3D MAP DESIGN TOKENS
+   Professional mobile-first design system for Valencia City Flood Alert
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     PRIMARY COLOR PALETTE
+     ========================================================================== */
+  
+  /* Core Brand Colors */
+  --color-primary: #0F6B72;        /* Deep teal - Primary actions */
+  --color-accent: #2B95D6;         /* Sky blue - Secondary actions */
+  --color-danger: #E04646;         /* Alert red - Danger/error states */
+  --color-amber: #F6A623;          /* Warning amber - Caution states */
+  --color-neutral-900: #0B1220;    /* Dark text - Primary text */
+
+  /* Extended Color Palette */
+  --color-success: #10B981;        /* Success green */
+  --color-warning: #F59E0B;        /* Warning orange */
+  --color-info: #3B82F6;          /* Info blue */
+  
+  /* Neutral Scale */
+  --color-neutral-50: #F8FAFC;     /* Lightest background */
+  --color-neutral-100: #F1F5F9;    /* Light background */
+  --color-neutral-200: #E2E8F0;    /* Border color */
+  --color-neutral-300: #CBD5E1;    /* Subtle border */
+  --color-neutral-400: #94A3B8;    /* Placeholder text */
+  --color-neutral-500: #64748B;    /* Secondary text */
+  --color-neutral-600: #475569;    /* Primary text light */
+  --color-neutral-700: #334155;    /* Primary text */
+  --color-neutral-800: #1E293B;    /* Dark text */
+
+  /* ==========================================================================
+     BACKGROUND GRADIENTS
+     ========================================================================== */
+  
+  --bg-gradient: linear-gradient(180deg, #F7F8FB 0%, #EFF6F9 100%);
+  --bg-gradient-dark: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  --bg-gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  --bg-gradient-danger: linear-gradient(135deg, var(--color-danger) 0%, #DC2626 100%);
+
+  /* ==========================================================================
+     GLASSMORPHISM SYSTEM
+     ========================================================================== */
+  
+  /* Glass Backgrounds */
+  --glass-bg: rgba(255, 255, 255, 0.72);          /* Primary glass */
+  --glass-light: rgba(255, 255, 255, 0.8);        /* Lighter glass */
+  --glass-medium: rgba(255, 255, 255, 0.6);       /* Medium glass */
+  --glass-dark: rgba(255, 255, 255, 0.4);         /* Darker glass */
+  --glass-subtle: rgba(255, 255, 255, 0.2);       /* Subtle glass */
+
+  /* Glass Borders */
+  --glass-border: rgba(255, 255, 255, 0.3);       /* Standard glass border */
+  --glass-border-strong: rgba(255, 255, 255, 0.5); /* Stronger glass border */
+  --glass-border-subtle: rgba(255, 255, 255, 0.1); /* Subtle glass border */
+
+  /* Glass Shadows */
+  --glass-shadow: rgba(31, 38, 135, 0.2);         /* Glass drop shadow */
+  --glass-shadow-strong: rgba(31, 38, 135, 0.3);  /* Stronger glass shadow */
+
+  /* ==========================================================================
+     CONNECTION STATUS COLORS
+     ========================================================================== */
+  
+  --status-live: #10B981;          /* Green - Live connection */
+  --status-degraded: #F6A623;      /* Amber - Degraded connection */
+  --status-offline: #64748B;       /* Grey - Offline */
+  --status-error: #E04646;         /* Red - Error state */
+
+  /* ==========================================================================
+     TYPOGRAPHY SCALE
+     ========================================================================== */
+  
+  /* Font Family */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Font Sizes */
+  --text-xs: 12px;      /* 12px - Small captions */
+  --text-sm: 14px;      /* 14px - Body text */
+  --text-base: 16px;    /* 16px - Base size */
+  --text-lg: 18px;      /* 18px - Large text */
+  --text-xl: 20px;      /* 20px - H4 */
+  --text-2xl: 24px;     /* 24px - H3 */
+  --text-3xl: 28px;     /* 28px - H2 Mobile */
+  --text-4xl: 36px;     /* 36px - H1 Desktop */
+
+  /* Line Heights */
+  --leading-tight: 1.25;    /* 1.25 - Tight spacing */
+  --leading-normal: 1.5;    /* 1.5 - Normal spacing */
+  --leading-relaxed: 1.625; /* 1.625 - Relaxed spacing */
+
+  /* Font Weights */
+  --weight-normal: 400;     /* Regular text */
+  --weight-medium: 500;     /* Medium emphasis */
+  --weight-semibold: 600;   /* Strong emphasis */
+  --weight-bold: 700;       /* Bold text */
+
+  /* Typography Tokens */
+  --font-display: var(--weight-semibold) var(--text-4xl)/44px var(--font-family);
+  --font-h1-mobile: var(--weight-semibold) var(--text-3xl)/36px var(--font-family);
+  --font-h2: var(--weight-semibold) var(--text-2xl)/32px var(--font-family);
+  --font-h3: var(--weight-semibold) var(--text-xl)/28px var(--font-family);
+  --font-h4: var(--weight-semibold) var(--text-lg)/24px var(--font-family);
+  --font-body: var(--weight-normal) var(--text-sm)/20px var(--font-family);
+  --font-caption: var(--weight-normal) var(--text-xs)/16px var(--font-family);
+  --font-button: var(--weight-semibold) var(--text-base)/20px var(--font-family);
+
+  /* ==========================================================================
+     SPACING SCALE
+     ========================================================================== */
+  
+  --space-1: 4px;       /* 0.25rem - Tight spacing */
+  --space-2: 8px;       /* 0.5rem - Small spacing */
+  --space-3: 12px;      /* 0.75rem - Medium-small spacing */
+  --space-4: 16px;      /* 1rem - Medium spacing */
+  --space-6: 24px;      /* 1.5rem - Large spacing */
+  --space-8: 32px;      /* 2rem - Extra large spacing */
+  --space-10: 40px;     /* 2.5rem - 2XL spacing */
+  --space-14: 56px;     /* 3.5rem - 3XL spacing */
+  --space-16: 64px;     /* 4rem - 4XL spacing */
+  --space-20: 80px;     /* 5rem - 5XL spacing */
+
+  /* Component-specific spacing */
+  --space-button-y: 12px;     /* Vertical button padding */
+  --space-button-x: 24px;     /* Horizontal button padding */
+  --space-card: 16px;         /* Card padding */
+  --space-panel: 20px;        /* Panel padding */
+
+  /* ==========================================================================
+     BORDER RADIUS SCALE
+     ========================================================================== */
+  
+  --radius-none: 0;         /* No radius */
+  --radius-sm: 4px;         /* Small radius */
+  --radius-md: 8px;         /* Medium radius */
+  --radius-lg: 12px;        /* Large radius */
+  --radius-xl: 16px;        /* Extra large radius */
+  --radius-2xl: 24px;       /* 2XL radius */
+  --radius-3xl: 32px;       /* 3XL radius */
+  --radius-full: 9999px;    /* Full/pill radius */
+
+  /* ==========================================================================
+     SHADOW SYSTEM
+     ========================================================================== */
+  
+  /* Standard Shadows */
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+  /* Specialized Shadows */
+  --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.15);      /* Glass morphism */
+  --shadow-floating: 0 12px 24px rgba(0, 0, 0, 0.12);      /* Floating elements */
+  --shadow-tooltip: 0 4px 16px rgba(0, 0, 0, 0.12);        /* Tooltips */
+  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.15);         /* Modals */
+
+  /* Colored Shadows */
+  --shadow-primary: 0 4px 16px rgba(15, 107, 114, 0.2);    /* Primary color shadow */
+  --shadow-accent: 0 4px 16px rgba(43, 149, 214, 0.2);     /* Accent color shadow */
+  --shadow-danger: 0 4px 16px rgba(224, 70, 70, 0.2);      /* Danger color shadow */
+
+  /* ==========================================================================
+     COMPONENT DIMENSIONS
+     ========================================================================== */
+  
+  /* Button Heights */
+  --button-height-sm: 32px;      /* Small buttons */
+  --button-height-md: 40px;      /* Medium buttons */
+  --button-height-lg: 48px;      /* Large buttons (mobile minimum) */
+  --button-height-xl: 56px;      /* Extra large buttons */
+
+  /* Control Sizes */
+  --control-sm: 32px;            /* Small controls */
+  --control-md: 40px;            /* Medium controls */
+  --control-lg: 48px;            /* Large controls */
+  --control-xl: 56px;            /* Extra large controls */
+
+  /* Panel Widths */
+  --panel-width-sm: 240px;       /* Small panels */
+  --panel-width-md: 280px;       /* Medium panels */
+  --panel-width-lg: 320px;       /* Large panels */
+
+  /* ==========================================================================
+     Z-INDEX SCALE
+     ========================================================================== */
+  
+  --z-base: 0;              /* Base layer */
+  --z-below: -1;            /* Below base */
+  --z-content: 10;          /* Content layer */
+  --z-sticky: 20;           /* Sticky elements */
+  --z-floating: 30;         /* Floating controls */
+  --z-dropdown: 40;         /* Dropdowns */
+  --z-tooltip: 50;          /* Tooltips */
+  --z-modal: 60;            /* Modals */
+  --z-popup: 70;            /* Popups */
+  --z-notification: 80;     /* Notifications */
+  --z-maximum: 9999;        /* Maximum z-index */
+
+  /* ==========================================================================
+     ANIMATION TIMINGS
+     ========================================================================== */
+  
+  /* Duration */
+  --duration-instant: 100ms;     /* Instant feedback */
+  --duration-fast: 150ms;        /* Fast transitions */
+  --duration-normal: 200ms;      /* Normal transitions */
+  --duration-slow: 300ms;        /* Slow transitions */
+  --duration-slower: 500ms;      /* Very slow transitions */
+
+  /* Easing Functions */
+  --ease-linear: linear;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);           /* Ease out */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);            /* Ease in */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);      /* Ease in-out */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bounce */
+
+  /* ==========================================================================
+     INTERACTION STATES
+     ========================================================================== */
+  
+  /* Opacity Levels */
+  --opacity-disabled: 0.5;       /* Disabled elements */
+  --opacity-hover: 0.8;          /* Hover state */
+  --opacity-active: 0.9;         /* Active state */
+  --opacity-focus: 1;            /* Focus state */
+
+  /* Transform Scales */
+  --scale-press: 0.95;           /* Button press scale */
+  --scale-hover: 1.02;           /* Hover scale */
+  --scale-focus: 1.05;           /* Focus scale */
+
+  /* ==========================================================================
+     BREAKPOINTS
+     ========================================================================== */
+  
+  --breakpoint-sm: 640px;        /* Small devices */
+  --breakpoint-md: 768px;        /* Medium devices */
+  --breakpoint-lg: 1024px;       /* Large devices */
+  --breakpoint-xl: 1280px;       /* Extra large devices */
+  --breakpoint-2xl: 1536px;      /* 2XL devices */
+
+  /* ==========================================================================
+     3D MAP SPECIFIC TOKENS
+     ========================================================================== */
+  
+  /* 3D Perspective */
+  --perspective-mobile: 600px;    /* Mobile 3D perspective */
+  --perspective-tablet: 800px;    /* Tablet 3D perspective */
+  --perspective-desktop: 1200px;  /* Desktop 3D perspective */
+
+  /* Layer Heights (for translateZ) */
+  --layer-terrain: 0px;          /* Terrain base layer */
+  --layer-water: 2px;            /* Water layer */
+  --layer-buildings: 5px;        /* Buildings base */
+  --layer-alerts: 10px;          /* Alert layer */
+  --layer-routes: 15px;          /* Route layer */
+  --layer-user: 25px;            /* User location */
+  --layer-ui: 50px;              /* UI elements */
+
+  /* Map Colors */
+  --map-terrain: #10B981;        /* Terrain color */
+  --map-water: #3B82F6;          /* Water color */
+  --map-buildings: #64748B;      /* Buildings color */
+  --map-alerts: #E04646;         /* Alerts color */
+  --map-routes: #8B5CF6;         /* Routes color */
+
+  /* ==========================================================================
+     REAL-TIME DATA STATES
+     ========================================================================== */
+  
+  /* Update States */
+  --state-fresh: #10B981;        /* Fresh data */
+  --state-stale: #F6A623;        /* Stale data */
+  --state-error: #E04646;        /* Error data */
+  --state-loading: #64748B;      /* Loading data */
+
+  /* Pulse Animations */
+  --pulse-duration: 2s;          /* Pulse animation duration */
+  --pulse-delay: 0.5s;           /* Pulse delay between cycles */
+
+  /* ==========================================================================
+     ACCESSIBILITY TOKENS
+     ========================================================================== */
+  
+  /* Focus Ring */
+  --focus-ring-width: 2px;       /* Focus ring width */
+  --focus-ring-offset: 2px;      /* Focus ring offset */
+  --focus-ring-color: var(--color-accent); /* Focus ring color */
+
+  /* High Contrast Mode */
+  --high-contrast-border: 2px solid var(--color-neutral-900);
+  --high-contrast-focus: 3px solid var(--color-accent);
+
+  /* ==========================================================================
+     COMPONENT-SPECIFIC TOKENS
+     ========================================================================== */
+  
+  /* Header */
+  --header-height-mobile: 56px;
+  --header-height-tablet: 64px;
+  --header-height-desktop: 72px;
+
+  /* Pill Bar */
+  --pill-height: 40px;
+  --pill-padding-x: 16px;
+  --pill-gap: 8px;
+
+  /* Floating Controls */
+  --floating-control-size: 48px;
+  --floating-control-gap: 12px;
+
+  /* Tooltip */
+  --tooltip-max-width: 280px;
+  --tooltip-padding: 16px;
+
+  /* Panel */
+  --panel-width: 280px;
+  --panel-padding: 20px;
+
+  /* Status Bar */
+  --status-bar-height: 32px;
+  --status-bar-padding: 8px 16px;
+}
+
+/* ==========================================================================
+   RESPONSIVE TOKEN OVERRIDES
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  :root {
+    /* Tablet adjustments */
+    --space-card: 20px;
+    --panel-width: 300px;
+    --button-height-lg: 44px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /* Desktop adjustments */
+    --space-card: 24px;
+    --panel-width: 320px;
+    --button-height-lg: 48px;
+    
+    /* Typography scales up */
+    --font-display: var(--weight-semibold) var(--text-4xl)/44px var(--font-family);
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES USING TOKENS
+   ========================================================================== */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-button {
+  background: var(--glass-medium);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.glass-button:hover {
+  background: var(--glass-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-floating);
+}
+
+.status-live {
+  color: var(--status-live);
+}
+
+.status-degraded {
+  color: var(--status-degraded);
+}
+
+.status-offline {
+  color: var(--status-offline);
+}
+
+.focus-ring:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ==========================================================================
+   DARK MODE TOKENS (Optional)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode overrides can be added here if needed */
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --color-neutral-900: #F8FAFC;
+    --color-neutral-50: #0F172A;
+  }
+}

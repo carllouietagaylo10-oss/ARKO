@@ -1,0 +1,2061 @@
+
+
+/* Import Professional 3D Map Design Tokens */
+@import url('./design-tokens.css');
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  
+  /* Critical: Prevent all layout shifts and overflows */
+  html {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure all containers respect viewport width */
+  .container, 
+  .max-w-6xl, 
+  .max-w-4xl,
+  .w-full {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Force proper text behavior globally */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Ensure flex and grid items behave properly */
+  .flex > *,
+  .grid > * {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  /* Professional spacing and alignment */
+  .professional-spacing {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  @media (min-width: 640px) {
+    .professional-spacing {
+      padding: 1.5rem;
+      margin: 0.75rem 0;
+    }
+  }
+  
+  /* Text wrapping improvements */
+  .text-wrap-safe {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    text-wrap: balance;
+  }
+  
+  /* Button text improvements */
+  button .text-wrap-safe {
+    text-wrap: nowrap;
+  }
+  
+  @media (max-width: 640px) {
+    button .text-wrap-safe {
+      text-wrap: balance;
+    }
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Utility classes for gradients */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Custom border utilities */
+.border-3 {
+  border-width: 3px;
+}
+
+/* Custom animations for FloodMap */
+@keyframes rainFall {
+  to {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+}
+
+.rain-drop {
+  animation: rainFall linear infinite;
+}
+
+.rain-drop {
+  animation: rainFall linear infinite;
+}
+
+@keyframes bg-gradient-radial {
+  0% {
+    background: radial-gradient(circle at center, rgba(34, 197, 94, 0.3) 0%, transparent 70%);
+  }
+  50% {
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+  }
+  100% {
+    background: radial-gradient(circle at center, rgba(34, 197, 94, 0.3) 0%, transparent 70%);
+  }
+}
+
+/* Enhanced user location animations */
+@keyframes locationPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes directionBlink {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes arrowPulse {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15) translateY(-2px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes compassSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gpsAccuracy {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+/* Utility classes for user location */
+.user-location-pulse {
+  animation: locationPulse 2s ease-in-out infinite;
+}
+
+.direction-indicator {
+  animation: arrowPulse 2s ease-in-out infinite;
+}
+
+.gps-ring {
+  animation: gpsAccuracy 3s ease-in-out infinite;
+}
+
+/* Enhanced animations for new features */
+@keyframes stormRotation {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes alertPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes landfallPrediction {
+  0% {
+    opacity: 0.6;
+    transform: translateY(0) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateY(0) scale(0.9);
+  }
+}
+
+@keyframes waterRise {
+  0% {
+    height: 0%;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes evacuationRoute {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Utility classes for enhanced features */
+.storm-center {
+  animation: stormRotation 12s linear infinite;
+}
+
+.alert-zone {
+  animation: alertPulse 2s ease-in-out infinite;
+}
+
+.landfall-indicator {
+  animation: landfallPrediction 3s ease-in-out infinite;
+}
+
+.water-level {
+  animation: waterRise 2s ease-out forwards;
+}
+
+.evacuation-route {
+  animation: evacuationRoute 3s ease-in-out infinite;
+}
+
+/* Enhanced map overlay gradients */
+@keyframes mapGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.weather-overlay {
+  background: linear-gradient(-45deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1), rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
+  background-size: 400% 400%;
+  animation: mapGradientShift 8s ease infinite;
+}
+
+/* Enhanced 3D animations and effects */
+@keyframes float3D {
+  0%, 100% {
+    transform: translateZ(0px) rotateY(0deg);
+  }
+  50% {
+    transform: translateZ(10px) rotateY(180deg);
+  }
+}
+
+@keyframes elevationRise {
+  from {
+    transform: translateZ(0px) scaleY(0);
+  }
+  to {
+    transform: translateZ(var(--elevation, 20px)) scaleY(1);
+  }
+}
+
+@keyframes perspectiveShift {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateX(15deg) rotateY(90deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(30deg) rotateY(180deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateX(15deg) rotateY(270deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(360deg);
+  }
+}
+
+@keyframes waterFlow3D {
+  0% {
+    transform: translateZ(1px) scaleX(1) scaleY(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateZ(3px) scaleX(1.1) scaleY(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(1px) scaleX(1) scaleY(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes buildingGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.6), 0 0 35px rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes photoGalleryReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes missingPersonAlert {
+  0%, 100% {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(251, 146, 60, 0.1));
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(251, 146, 60, 0.2));
+    border-color: rgba(239, 68, 68, 0.6);
+  }
+}
+
+@keyframes reportSubmissionSuccess {
+  0% {
+    transform: scale(1) rotate(0deg);
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  }
+  25% {
+    transform: scale(1.05) rotate(2deg);
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+  50% {
+    transform: scale(1.1) rotate(-2deg);
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+  }
+  75% {
+    transform: scale(1.05) rotate(1deg);
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  }
+}
+
+@keyframes cardHoverLift {
+  from {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  to {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1);
+  }
+}
+
+@keyframes gradientShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Utility classes for enhanced animations */
+.float-3d {
+  animation: float3D 6s ease-in-out infinite;
+}
+
+.elevation-rise {
+  animation: elevationRise 2s ease-out forwards;
+}
+
+.perspective-shift {
+  animation: perspectiveShift 20s linear infinite;
+}
+
+.water-flow-3d {
+  animation: waterFlow3D 3s ease-in-out infinite;
+}
+
+.building-glow {
+  animation: buildingGlow 4s ease-in-out infinite;
+}
+
+.photo-gallery-reveal {
+  animation: photoGalleryReveal 0.5s ease-out forwards;
+}
+
+.missing-person-alert {
+  animation: missingPersonAlert 2s ease-in-out infinite;
+}
+
+.report-submission-success {
+  animation: reportSubmissionSuccess 1.5s ease-in-out;
+}
+
+.card-hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover-lift:hover {
+  animation: cardHoverLift 0.3s ease-out forwards;
+}
+
+.gradient-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: gradientShimmer 2s infinite;
+}
+
+/* Enhanced glass morphism effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Professional 3D Map Styles */
+.map-3d-container {
+  perspective: 1200px;
+  perspective-origin: center center;
+}
+
+.map-3d-layer {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.building-3d {
+  transform-style: preserve-3d;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.building-3d:hover {
+  transform: translateZ(10px) scale(1.02);
+  filter: brightness(1.1);
+}
+
+.water-3d {
+  transform-style: preserve-3d;
+  background: linear-gradient(45deg, 
+    rgba(59, 130, 246, 0.6) 0%, 
+    rgba(99, 179, 237, 0.7) 25%, 
+    rgba(59, 130, 246, 0.6) 50%, 
+    rgba(99, 179, 237, 0.7) 75%, 
+    rgba(59, 130, 246, 0.6) 100%);
+  background-size: 20px 20px;
+  animation: waterFlow3D 4s ease-in-out infinite;
+}
+
+/* Professional 3D Animations */
+@keyframes professional3DFloat {
+  0%, 100% {
+    transform: translateZ(0px) rotateY(0deg);
+  }
+  50% {
+    transform: translateZ(5px) rotateY(1deg);
+  }
+}
+
+@keyframes mapMarkerPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes layerToggle {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes panelSlide {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tooltipAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1) translateY(0);
+  }
+}
+
+@keyframes cameraTransition {
+  0% {
+    transform: perspective(1000px) rotateX(var(--start-x, 0deg)) rotateY(var(--start-y, 0deg)) scale(var(--start-scale, 1));
+  }
+  100% {
+    transform: perspective(1000px) rotateX(var(--end-x, 0deg)) rotateY(var(--end-y, 0deg)) scale(var(--end-scale, 1));
+  }
+}
+
+@keyframes compassRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoomPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+}
+
+@keyframes glassmorphismShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes floodZonePulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes evacuationRouteFlow {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes userLocationBeacon {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(59, 130, 246, 0);
+  }
+}
+
+/* Professional 3D Utility Classes */
+.professional-3d-float {
+  animation: professional3DFloat 3s ease-in-out infinite;
+}
+
+.map-marker-pulse {
+  animation: mapMarkerPulse 2s ease-in-out infinite;
+}
+
+.layer-toggle-enter {
+  animation: layerToggle 0.15s ease-out;
+}
+
+.panel-slide-enter {
+  animation: panelSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tooltip-appear {
+  animation: tooltipAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.camera-transition {
+  animation: cameraTransition 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.compass-auto-rotate {
+  animation: compassRotate 20s linear infinite;
+}
+
+.zoom-pulse:hover {
+  animation: zoomPulse 0.3s ease-out;
+}
+
+.glassmorphism-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: glassmorphismShimmer 2s infinite;
+}
+
+.flood-zone-pulse {
+  animation: floodZonePulse 3s ease-in-out infinite;
+}
+
+.evacuation-route-flow {
+  animation: evacuationRouteFlow 2s linear infinite;
+}
+
+.user-location-beacon {
+  animation: userLocationBeacon 2s infinite;
+}
+
+/* Professional Glassmorphism for 3D UI */
+.professional-3d-glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
+
+.professional-3d-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 16px 64px 0 rgba(31, 38, 135, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+}
+
+.professional-3d-button {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professional-3d-button:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 4px 16px 0 rgba(31, 38, 135, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
+
+.professional-3d-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px 0 rgba(31, 38, 135, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+}
+
+/* 3D Map Layer Depth Effects */
+.map-layer-0 { transform: translateZ(0px); }
+.map-layer-1 { transform: translateZ(2px); }
+.map-layer-2 { transform: translateZ(5px); }
+.map-layer-3 { transform: translateZ(10px); }
+.map-layer-4 { transform: translateZ(15px); }
+.map-layer-5 { transform: translateZ(25px); }
+
+/* Professional Mobile Optimizations */
+@media (max-width: 768px) {
+  .map-3d-container {
+    perspective: 800px;
+  }
+  
+  .building-3d:hover {
+    transform: translateZ(5px) scale(1.01);
+  }
+  
+  .professional-3d-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+  }
+  
+  .professional-3d-button {
+    backdrop-filter: blur(12px);
+  }
+  
+  .tooltip-appear {
+    animation-duration: 0.15s;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-3d-container {
+    perspective: 600px;
+  }
+  
+  .professional-3d-float {
+    animation-duration: 4s;
+  }
+  
+  .glassmorphism-shimmer {
+    animation-duration: 3s;
+  }
+}
+
+/* Disable heavy animations during initial load and reduce processing */
+.loading *, 
+body.loading * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Reduce motion for performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhanced responsive design with improved spacing and NO OVERLAPS */
+@media (max-width: 768px) {
+  .enhanced-flood-map {
+    height: 300px;
+  }
+  
+  .map-controls {
+    scale: 0.9;
+  }
+  
+  .evacuation-tooltip {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .map-3d-container {
+    perspective: 800px;
+  }
+
+  .card-hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Critical mobile fixes - prevent all overlaps */
+  * {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  /* Force proper text wrapping */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    word-break: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  /* Prevent badge overflow */
+  .badge, [class*="badge"] {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* Fix button text overflow */
+  button {
+    min-width: 0 !important;
+  }
+  
+  button span {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* Improved mobile spacing */
+  .mobile-spacing {
+    padding: 16px;
+  }
+  
+  /* Better mobile text sizes */
+  .mobile-text-responsive {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Mobile button improvements */
+  .mobile-button-spacing {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+  
+  /* Force grid items to not overflow */
+  .grid > * {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  /* Fix flex items */
+  .flex > * {
+    min-width: 0 !important;
+  }
+  
+  /* Header specific fixes */
+  header {
+    overflow: hidden !important;
+  }
+  
+  /* Chart specific fixes */
+  .chart-container, [class*="chart"] {
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-3d-container {
+    perspective: 600px;
+  }
+
+  .building-3d:hover {
+    transform: translateZ(5px) scale(1.02);
+  }
+
+  .gradient-shimmer {
+    animation-duration: 3s;
+  }
+  
+  /* CRITICAL: Force absolutely no text overflow on mobile */
+  * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Mobile-first spacing improvements */
+  .mobile-compact-spacing {
+    padding: 12px;
+    margin: 8px 0;
+  }
+  
+  /* Ensure text doesn't overflow on small screens */
+  .mobile-text-wrap {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    word-break: break-word !important;
+  }
+  
+  /* Force all text elements to wrap */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: clamp(1rem, 4vw, 1.5rem) !important;
+    line-height: 1.3 !important;
+    word-break: break-word !important;
+  }
+  
+  p, span, div {
+    font-size: clamp(0.875rem, 3vw, 1rem) !important;
+    line-height: 1.5 !important;
+    word-break: break-word !important;
+  }
+  
+  /* Improved mobile card spacing */
+  .mobile-card-padding {
+    padding: 16px;
+  }
+  
+  /* Better mobile grid spacing */
+  .mobile-grid-gap {
+    gap: 12px;
+  }
+  
+  /* Fix button text on very small screens */
+  button {
+    font-size: 0.8rem !important;
+    padding: 8px 12px !important;
+  }
+  
+  /* Chart fixes for small screens */
+  .chart-container {
+    font-size: 0.7rem !important;
+  }
+  
+  /* Badge fixes */
+  .badge, [class*="badge"] {
+    font-size: 0.7rem !important;
+    padding: 2px 6px !important;
+  }
+  
+  /* Mobile navigation tab adjustments */
+  [role="tab"] {
+    gap: 6px !important;
+    padding: 10px 12px !important;
+    min-height: 40px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Mobile icon container */
+  [role="tab"] > div:first-child {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  
+  /* Mobile icon sizing */
+  [role="tab"] svg,
+  [role="tab"] .jellyfish-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* Additional utility classes for improved spacing */
+.consistent-spacing {
+  padding: 24px;
+  margin: 16px 0;
+}
+
+.card-standard-padding {
+  padding: 24px;
+}
+
+.button-standard-height {
+  min-height: 44px;
+}
+
+.text-no-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-wrap-balance {
+  text-wrap: balance;
+}
+
+/* Improved accessibility and contrast */
+.high-contrast-text {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.emergency-text-size {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.header-text-size {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Fix text overflow and layout issues */
+.prevent-overflow {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.chart-bar {
+  min-width: 8px;
+  transition: all 0.3s ease;
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
+
+/* Header improvements */
+.header-compact {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .header-compact {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Badge improvements */
+.badge-responsive {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+/* Button improvements */
+.button-responsive {
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .button-responsive {
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Grid improvements */
+.grid-responsive {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card improvements */
+.card-responsive {
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .card-responsive {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-responsive {
+    padding: 2rem;
+  }
+}
+
+/* Text balance for better readability */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Fix z-index stacking issues */
+.z-header {
+  z-index: 50;
+}
+
+.z-alert {
+  z-index: 40;
+}
+
+.z-modal {
+  z-index: 60;
+}
+
+.z-tooltip {
+  z-index: 70;
+}
+
+/* Ensure proper spacing between elements */
+.space-y-safe > * + * {
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .space-y-safe > * + * {
+    margin-top: 2rem;
+  }
+}
+
+/* Professional button spacing */
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-group > * {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .btn-group > * {
+    flex: none;
+  }
+}
+
+/* Professional Arko Avatar Animations */
+@keyframes arkoAvatarFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0.5deg) scale(1.01);
+  }
+}
+
+@keyframes arkoAvatarGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4)) brightness(1.05);
+  }
+}
+
+/* Professional Jellyfish Animations */
+@keyframes arkoJellyfishFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.4));
+  }
+  50% {
+    transform: translateY(-3px) rotate(0.5deg) scale(1.01);
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+  }
+}
+
+@keyframes jellyfishTentacleWave {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.3));
+  }
+  50% {
+    transform: translateY(2px) translateX(1px) rotate(1deg);
+    filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.4));
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    opacity: 0.9;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+  }
+}
+
+@keyframes professionalPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+}
+
+@keyframes softTextGlow {
+  0%, 100% {
+    text-shadow: 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes arkoSpeak {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.3);
+  }
+}
+
+@keyframes arkoGlow {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 10px rgba(59, 130, 246, 0.4))
+      drop-shadow(0 0 20px rgba(59, 130, 246, 0.2))
+      brightness(1);
+  }
+  25% {
+    filter: 
+      drop-shadow(0 0 15px rgba(147, 51, 234, 0.6))
+      drop-shadow(0 0 25px rgba(147, 51, 234, 0.3))
+      brightness(1.05);
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 20px rgba(59, 130, 246, 0.8))
+      drop-shadow(0 0 30px rgba(147, 51, 234, 0.4))
+      drop-shadow(0 0 40px rgba(6, 182, 212, 0.3))
+      brightness(1.1);
+  }
+  75% {
+    filter: 
+      drop-shadow(0 0 18px rgba(16, 185, 129, 0.6))
+      drop-shadow(0 0 28px rgba(16, 185, 129, 0.3))
+      brightness(1.05);
+  }
+}
+
+@keyframes logoEnhancedGlow {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.6))
+      drop-shadow(0 0 16px rgba(59, 130, 246, 0.4))
+      drop-shadow(0 0 24px rgba(59, 130, 246, 0.2))
+      contrast(1.05)
+      saturate(1.1);
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 12px rgba(59, 130, 246, 0.8))
+      drop-shadow(0 0 24px rgba(59, 130, 246, 0.6))
+      drop-shadow(0 0 36px rgba(59, 130, 246, 0.4))
+      drop-shadow(0 0 48px rgba(147, 51, 234, 0.3))
+      contrast(1.1)
+      saturate(1.2);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+@keyframes timeTransition {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes cloudDrift {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px));
+  }
+}
+
+@keyframes buildingLights {
+  0%, 100% {
+    opacity: 0.6;
+    background-color: rgba(255, 255, 0, 0.6);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+@keyframes roofShine {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  }
+}
+
+@keyframes flagWave {
+  0%, 100% {
+    transform: rotate(0deg) scaleX(1);
+  }
+  25% {
+    transform: rotate(2deg) scaleX(0.95);
+  }
+  75% {
+    transform: rotate(-2deg) scaleX(1.05);
+  }
+}
+
+/* Video Game Style Building Animations */
+@keyframes gameStyleBuildingGlow {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4), inset 0 2px 0 rgba(255,255,255,0.3), 0 0 20px currentColor;
+    filter: brightness(1.1);
+  }
+}
+
+@keyframes windowFlicker {
+  0%, 80%, 100% {
+    background: linear-gradient(to bottom, #fbbf24, #f59e0b, #d97706);
+    opacity: 0.9;
+  }
+  85%, 95% {
+    background: linear-gradient(to bottom, #fde047, #facc15, #eab308);
+    opacity: 1;
+  }
+  90% {
+    background: linear-gradient(to bottom, #fef3c7, #fde68a, #fcd34d);
+    opacity: 0.7;
+  }
+}
+
+/* Enhanced cheerful animations */
+@keyframes cheerfulBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  40% {
+    transform: translateY(-15px) scale(1.1) rotate(5deg);
+  }
+  60% {
+    transform: translateY(-8px) scale(1.05) rotate(-3deg);
+  }
+}
+
+@keyframes rainbowTextShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes sparkleExplosion {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Enhanced colorful icon animations */
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1) drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    transform: scale(1.15);
+    filter: brightness(1.3) drop-shadow(0 0 15px currentColor);
+  }
+}
+
+/* Professional login interface animations */
+@keyframes profesionalGlassShimmer {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes softCardFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.005);
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 8px 32px rgba(59, 130, 246, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 12px 40px rgba(59, 130, 246, 0.25));
+  }
+}
+
+@keyframes buttonPressEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes focusRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes iconGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 currentColor;
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes iconBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes iconSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Professional utility classes */
+.arko-jellyfish-float {
+  animation: arkoJellyfishFloat 3s ease-in-out infinite;
+}
+
+.jellyfish-tentacle {
+  animation: jellyfishTentacleWave 2s ease-in-out infinite;
+}
+
+.subtle-glow {
+  animation: subtleGlow 2s ease-in-out infinite;
+}
+
+.professional-pulse {
+  animation: professionalPulse 2s ease-in-out infinite;
+}
+
+.soft-text-glow {
+  animation: softTextGlow 3s ease-in-out infinite;
+}
+
+/* Enhanced satellite map styles */
+.satellite-map {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, 
+      #1a1a1a 0%, 
+      #2d3748 25%, 
+      #4a5568 50%, 
+      #2d3748 75%, 
+      #1a1a1a 100%);
+}
+
+.satellite-terrain {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.02) 4px
+    );
+}
+
+.game-building-glow {
+  animation: gameStyleBuildingGlow 4s ease-in-out infinite;
+}
+
+.window-flicker {
+  animation: windowFlicker 5s ease-in-out infinite;
+}
+
+.cheerful-bounce {
+  animation: cheerfulBounce 2s ease-in-out infinite;
+}
+
+.rainbow-text {
+  background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowTextShine 3s linear infinite;
+}
+
+.sparkle-explosion {
+  animation: sparkleExplosion 2s ease-out infinite;
+}
+
+/* Professional text styling */
+.arko-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4);
+  background-size: 200% 200%;
+  animation: subtleGradientShift 6s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+
+
+.arko-speak {
+  animation: arkoSpeak 0.5s ease-in-out infinite;
+}
+
+.arko-glow {
+  animation: arkoGlow 3s ease-in-out infinite;
+}
+
+.arko-avatar-float {
+  animation: arkoAvatarFloat 4s ease-in-out infinite;
+}
+
+.arko-avatar-glow {
+  animation: arkoAvatarGlow 3s ease-in-out infinite;
+}
+
+.logo-enhanced-glow {
+  animation: logoEnhancedGlow 4s ease-in-out infinite;
+}
+
+.logo-float {
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+.time-transition {
+  animation: timeTransition 2s ease-out;
+}
+
+.particle-float {
+  animation: particleFloat linear infinite;
+}
+
+.cloud-drift {
+  animation: cloudDrift linear infinite;
+}
+
+.building-lights {
+  animation: buildingLights 4s ease-in-out infinite;
+}
+
+.roof-shine {
+  animation: roofShine 6s ease-in-out infinite;
+}
+
+.flag-wave {
+  animation: flagWave 3s ease-in-out infinite;
+}
+
+.icon-pulse {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+.icon-glow {
+  animation: iconGlow 3s ease-in-out infinite;
+}
+
+.icon-bounce {
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.icon-spin {
+  animation: iconSpin 2s linear infinite;
+}
+
+/* Enhanced 3D building effects */
+.building-3d {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.building-3d:hover {
+  transform: translateZ(15px) scale(1.02) !important;
+  filter: brightness(1.1) drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+}
+
+/* Time-based background transitions */
+.time-based-bg {
+  transition: background 2s ease-in-out;
+}
+
+/* Enhanced glass morphism for time backgrounds */
+.time-glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+}
+
+/* Professional login interface utility classes */
+.professional-glass-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.professional-glass-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: profesionalGlassShimmer 3s infinite;
+  pointer-events: none;
+}
+
+.soft-card-float {
+  animation: softCardFloat 8s ease-in-out infinite;
+}
+
+.subtle-glow {
+  animation: subtleGlow 4s ease-in-out infinite;
+}
+
+.button-press-effect:active {
+  animation: buttonPressEffect 0.15s ease-out;
+}
+
+.focus-ring-animation:focus-visible {
+  animation: focusRing 0.3s ease-out;
+}
+
+/* Enhanced glassmorphism effects */
+.professional-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.professional-glass-dark {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.input-glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-glass:focus {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(59, 130, 246, 0.5);
+  box-shadow: 
+    0 0 0 3px rgba(59, 130, 246, 0.1),
+    0 4px 12px 0 rgba(59, 130, 246, 0.15);
+}
+
+.button-glass {
+  background: rgba(59, 130, 246, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 
+    0 4px 16px 0 rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-glass:hover {
+  background: rgba(59, 130, 246, 1);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 24px 0 rgba(59, 130, 246, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.button-glass:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px 0 rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive glassmorphism adjustments */
+@media (max-width: 640px) {
+  .professional-glass {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .input-glass {
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Navigation Tab Layout - Responsive Support Only */
+@media (max-width: 640px) {
+  [role="tab"] {
+    gap: 6px !important;
+    padding: 8px 10px !important;
+    font-size: 0.75rem !important;
+    min-height: 40px !important;
+  }
+  
+  [role="tab"] > div {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  
+  [role="tab"] svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [role="tab"] {
+    gap: 4px !important;
+    padding: 6px 8px !important;
+    font-size: 0.7rem !important;
+    min-height: 36px !important;
+  }
+  
+  [role="tab"] > div {
+    width: 12px !important;
+    height: 12px !important;
+  }
+  
+  [role="tab"] svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+
+/* Professional styling overrides */
+.arko-glow {
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.15)) !important;
+  transition: filter 0.2s ease !important;
+}
+
+.arko-glow:hover {
+  filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.2)) !important;
+}
+
+/* Add subtle gradient animation */
+@keyframes subtleGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Professional button hover effects */
+.professional-button-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professional-button-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.professional-button-hover:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
